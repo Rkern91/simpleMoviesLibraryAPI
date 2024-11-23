@@ -8,7 +8,7 @@ class Authentication {
 
       if (!bearerHeader) {
         res.status(403).json({ auth: false, message: 'Nenhum token fornecido.' });
-        return; // Garante que não continua a execução após enviar a resposta
+        return;
       }
 
       const bearer = bearerHeader.split(' ')[1];
@@ -20,11 +20,11 @@ class Authentication {
             message: 'Failed to authenticate token.',
             error: err,
           });
-          return; // Finaliza o fluxo em caso de erro
+          return;
         }
 
-        req.params.token = bearer; // Adiciona o token aos parâmetros
-        next(); // Continua a cadeia de middlewares
+        req.params.token = bearer;
+        next();
       });
     } catch (error) {
       res.status(500).json({ message: 'Erro interno no servidor.', error });

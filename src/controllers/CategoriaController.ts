@@ -15,7 +15,7 @@ export const createCategoria = async (request: Request, response: Response): Pro
     if (CategoriaRepository != null)
     {
       response.status(409).json({ message: 'Categoria ja cadastrada' });
-      return; // Para garantir que a execução do código pare aqui
+      return;
     }
 
     const Categoria:    Categorias[] = AppDataSource.getRepository(Categorias).create({ ...objCategoriaFields});

@@ -15,7 +15,7 @@ export const createUsuario = async (request: Request, response: Response): Promi
     if (usuarioRepository != null)
     {
       response.status(409).json({ message: 'Usuario ja cadastrado' });
-      return; // Para garantir que a execução do código pare aqui
+      return;
     }
 
     const usuario:    Usuarios[] = AppDataSource.getRepository(Usuarios).create({ ...objUsuarioFields});

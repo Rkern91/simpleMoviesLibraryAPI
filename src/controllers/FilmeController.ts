@@ -111,12 +111,11 @@ export const getFilmeByCategoria = async (request: Request, response: Response):
   try {
     const cd_categoria: number = +request.params.cd_categoria;
 
-    // Buscar filmes pela categoria
     const filmes = await AppDataSource.getRepository(Filmes).find({
       where: {
         categoria: { cd_categoria },
       },
-      relations: ["categoria"], // Inclui a categoria nos resultados, se necessário
+      relations: ["categoria"],
     });
 
     if (filmes.length === 0) {
@@ -159,7 +158,7 @@ export const updateFilme = async (request: Request, response: Response): Promise
       }
 
       objFilme.categoria = novaCategoria;
-      delete objFilmeFields['cd_categoria']; // Remover para evitar sobrescrever diretamente
+      delete objFilmeFields['cd_categoria'];
     }
 
     AppDataSource.getRepository(Filmes).merge(objFilme, objFilmeFields);

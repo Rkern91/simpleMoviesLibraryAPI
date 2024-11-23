@@ -1,5 +1,4 @@
 {
-  /* Visit https://aka.ms/tsconfig to read more about this file */
   "compilerOptions": {
     "lib": [
       "es5",
@@ -15,7 +14,7 @@
     "outDir": "./build",                   // Specify an output folder for all emitted files.
     "emitDecoratorMetadata": true,         // Emit design-type metadata for decorated declarations in source.
     "experimentalDecorators": true,        // Enable experimental support for decorators.
-    "strict": false,                        // Enable all strict type-checking options.
+    "strict": false,                       // Enable all strict type-checking options.
     "sourceMap": true
   },
   "include": ["src/**/*.ts", "server.ts"],
