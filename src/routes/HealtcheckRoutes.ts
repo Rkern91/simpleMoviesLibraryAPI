@@ -1,18 +1,21 @@
 import express, { Request, Response } from 'express';
+import os                             from 'os';
+import { Pool }                       from 'pg';
+import dotenv                         from "dotenv";
 
-import os from 'os';
-import { Pool } from 'pg';
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'filmes',
-  password: '',
-  port: 5432,
-});
+dotenv.config()
 
 const RouterSystemStatus = express.Router();
 
 RouterSystemStatus.post('/healtcheck', async (req: Request, res: Response) => {
+  const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: '',
+    port: 5432,
+  });
+
   const uptime      = process.uptime();
   const memoryUsage = process.memoryUsage();
   const loadAverage = os.loadavg();

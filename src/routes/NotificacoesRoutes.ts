@@ -4,7 +4,7 @@ import Auth            from '../controllers/AuthController';
 
 const RouterNotification = express.Router();
 
-RouterNotification.post('/send', Auth.hasAuthorization, async(req, res) => {
+RouterNotification.post('/notificar', Auth.hasAuthorization, async(req, res) => {
   const { queue, message } = req.body;
 
   try
